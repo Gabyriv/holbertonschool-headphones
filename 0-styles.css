@@ -35,7 +35,7 @@ a:active {
 
 /* HEADER STYLES */
 .header {
-    position: fixed;
+    position: absolute;
     width: 100%;
     top: 0;
     left: 0;
@@ -45,27 +45,38 @@ a:active {
 }
 
 .header-container {
+    position: relative;
     max-width: 62.5rem;
+    /* 1000px */
     margin: 0 auto;
+    padding: 0 1.25rem;
+    /* 20px */
+}
+
+.nav-menu {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 1.25rem;
+    width: 100%;
+    position: relative;
 }
 
 .logo img {
     height: 2rem;
+    /* 32px */
 }
 
 /* Navigation menu */
 .menu-items {
     display: flex;
     gap: 2.5rem;
+    /* 40px */
 }
 
 .nav-menu a {
     font-weight: 700;
     font-size: 0.75rem;
+    /* 12px */
     text-transform: lowercase;
 }
 
@@ -202,38 +213,49 @@ a:active {
     /* Mobile menu styles */
     .header {
         padding: 1.25rem 0;
+        /* 20px */
     }
 
     .header-container {
         padding: 0 0.9375rem;
+        /* 15px */
+    }
+
+    .nav-menu {
+        flex-direction: column;
+        align-items: flex-start;
     }
 
     .menu-btn {
         display: block;
         position: absolute;
-        right: 0.9375rem;
+        left: 0.9375rem;
+        /* 15px */
         top: 1.375rem;
+        /* 22px */
         z-index: 20;
     }
 
+    .logo {
+        margin: 0 auto;
+    }
+
     .menu-items {
-        position: fixed;
-        top: 0;
-        left: 0;
+        position: static;
         width: 100%;
-        height: 100vh;
-        background-color: #071629;
         flex-direction: column;
-        justify-content: center;
         align-items: center;
         gap: 2.5rem;
-        transform: translateY(-100%);
-        transition: transform 0.3s ease;
-        z-index: 15;
+        /* 40px */
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        margin-top: 1.25rem;
+        /* 20px */
     }
 
     .menu-toggle:checked~.menu-items {
-        transform: translateY(0);
+        max-height: 100vh;
     }
 
     .menu-toggle:checked~.menu-btn .menu-icon {
